@@ -3,50 +3,54 @@ package bank;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by jszeligowski on 2018-02-25.
- */
-public class Bank
-{
+public class Bank {
     private String name;
-    List<User> userList;
-    List<Account> accountList;
-    private boolean addedUser;
+    private UserService userService;
+    private AccountService accountService;
 
-    private static int idCounter = 0;
-
-    public Bank( String name )
-    {
+    public Bank(String name) {
         this.name = name;
-        this.userList = new ArrayList<>();
-        this.accountList = new ArrayList<>();
+        this.userService = new UserService();
+        this.accountService = new AccountService();
     }
 
-    public String getName()
-    {
+    public boolean createAccount(int userId, Account account) {
+        boolean result = false;
+        if (userService.isUserPresent(userId)) {
+            result = accountService.addAccount(account);
+        }
+        return result;
+    }
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    public void setAccountService(AccountService accountService) {
+        this.accountService = accountService;
+    }
+
+    public int getNumberOfUsers() {
+        return userService.getNumberOfUsers();
+    }
+
+    public int getNumberOfAccounts() {
+        return accountService.getNumberOfAccounts();
+    }
+
+    public boolean addUser(User user) {
+        return userService.addUser(user);
+    }
+
+    public String getName() {
         return name;
     }
 
-    public List<User> getUserList()
-    {
-        return userList;
+    public UserService getUserService() {
+        return userService;
     }
 
-    public List<Account> getAcountList()
-    {
-        return accountList;
+    public AccountService getAccountService() {
+        return accountService;
     }
-
-    public boolean addUserToBank( User user )
-    {
-        boolean result = false;
-        if( user != null )
-        {
-            user.setId( idCounter++ );
-            userList.add( user );
-            result = true;
-        }
-        return true;
-    }
-
 }
