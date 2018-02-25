@@ -9,28 +9,34 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserService {
+public class UserService
+{
     private static int idCounter = 0;
     private List<User> users;
 
-    public UserService() {
+    public UserService()
+    {
         this.users = new ArrayList<>();
     }
 
-    public boolean isUserPresent(int userId) {
+    public boolean isUserPresent( int userId )
+    {
         return users.stream()
-            .anyMatch(e -> userId == e.getId());
+            .anyMatch( e -> userId == e.getId() );
     }
 
-    public int getNumberOfUsers() {
+    public int getNumberOfUsers()
+    {
         return users.size();
     }
 
-    public boolean addUser(User user) {
+    public boolean addUser( User user )
+    {
         boolean result = false;
-        if (user != null) {
-            user.setId(idCounter++);
-            users.add(user);
+        if( user != null )
+        {
+            user.setId( idCounter++ );
+            users.add( user );
             result = true;
         }
         return result;
