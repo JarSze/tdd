@@ -18,6 +18,6 @@ public class WritersNamesTest
     @Test
     public void sayHelloWithNamesAndCharts()
     {
-        Assert.assertEquals( "Hello Jan, Tom and Steve", writersNames.sayHello( "Jan,Tom,Steve" ) );
+        Assert.assertEquals( "Hello, Jan, Tom and Steve", writersNames.sayHello( "Jan,Tom,Steve" ) );
     }
 }
