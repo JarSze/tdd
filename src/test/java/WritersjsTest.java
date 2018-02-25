@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.Writer;
 
-public class WriterjsTest
+public class WritersjsTest
 {
     private Writersjs writersjs;
 
@@ -46,6 +46,20 @@ public class WriterjsTest
         String name = "TOM";
         String result = writersjs.sayHello( name );
         Assert.assertEquals( "HELLO TOM", result );
+    }
+
+    @Test
+    public void hasTextOneWhiteSpace()
+    {
+        String name = " ";
+        Assert.assertEquals( "Hello my friend", writersjs.sayHello( name ) );
+    }
+
+    @Test
+    public void hasTextFourWhiteSpace()
+    {
+        String name = "    ";
+        Assert.assertEquals( "Hello my friend", writersjs.sayHello( name ) );
     }
 
 }
