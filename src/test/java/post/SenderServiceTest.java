@@ -13,13 +13,14 @@ public class SenderServiceTest {
         //Given:
         SenderService senderService = new SenderService();
         String message = "Hello World";
-        String from = "qwerty";
-        String to = "asdf";
+        String from = "tom";
+        String to = "jerry";
 
         //When:
         boolean result = senderService.sendMessage(from, to, message);
 
         //Then:
         Assert.assertTrue("Message was not sent", result);
+
     }
 }
